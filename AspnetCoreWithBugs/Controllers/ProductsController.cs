@@ -45,17 +45,12 @@ namespace AspnetCoreWithBugs.Controllers
         [HttpGet]
         public async Task<IActionResult> Edit(int id)
         {
-            if (ModelState.IsValid)
+            var product = await _context.Product.FindAsync(id);
+            if (product == null)
             {
-                return View(await ProductDB.GetProductByID(id, _context));
+                return NotFound();
             }
-            return View(id);
-            //var product = await _context.Product.FindAsync(id);
-            //if (product == null)
-            //{
-            //    return NotFound();
-            //}
-            //return View(product);
+            return View(product);
         }
 
         [HttpPost]
