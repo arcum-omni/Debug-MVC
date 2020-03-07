@@ -72,5 +72,7 @@ namespace AspnetCoreWithBugs.Data
             context.Entry(p).State = EntityState.Deleted;
             await context.SaveChangesAsync();
         }
+
+
     }
 }
